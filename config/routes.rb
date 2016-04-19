@@ -17,6 +17,22 @@ Rails.application.routes.draw do
 
   post 'user/advanceLogin'
 
+  namespace :v1 do 
+    scope '/users' do
+      post '/login' => 'users#login'
+      post '/create' => 'users#create'
+      delete '/logout' => 'users#logout'
+      get '/view/:id' => 'users#viewUser'
+      put '/edit' => 'users#editUser'
+      post '/forgotPassword' => 'users#forgotPassword'
+      post '/resetPassword' => 'users#resetPassword'
+      put '/changePassword' => 'users#changePassword'
+      get '/index' => 'users#index'
+      get '/redisData' => 'users#redisData'
+      get '/updateExistingDataRedis' => 'users#updateExistingDataRedis'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
